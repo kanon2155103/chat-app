@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\models\User;
 
 class SignupController  extends Controller
 {
@@ -42,6 +43,6 @@ class SignupController  extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return to_route('chat.signup');
+        return redirect('chat/signup');
     }
 }

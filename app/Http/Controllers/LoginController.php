@@ -15,7 +15,11 @@ class LoginController  extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return view('login');
+=======
+        return view('chat.login');
+>>>>>>> origin/signup
     }
 
     /**
