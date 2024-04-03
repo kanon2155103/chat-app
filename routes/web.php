@@ -3,6 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ChatController;
+
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
+use App\Http\Controllers\AccountController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +23,51 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('chat')
+->name('chat')
+->controller(ChatController::class)
+->group(
+    function() {
+        Route::middleware(['auth'])
+        ->name('chat')
+        ->controller(ChatController::class)
+        ->group(
+            function() {
+                route::get('/', 'index')->name('.index');
+                route::get('/create', 'create')->name('.create');
+                route::post('/', 'store')->name('.store');
+            }
+        );
+
+        Route::name('.login')
+        ->controller(LoginController::class)
+        ->group(
+            function() {
+                route::get('/login', 'create');
+                route::post('/login', 'store')->name('.store');
+            }
+        );
+
+        Route::name('.signup')
+        ->controller(SignupController::class)
+        ->group(
+            function() {
+                route::get('/signup', 'create')->name('.create');
+                route::post('/signup', 'store')->name('.store');
+            }
+        );
+
+        Route::name('.account')
+        ->controller(AccountController::class)
+        ->group(
+            function() {
+                route::get('user/{id}', 'index')->name('.index');
+            }
+        );
+
+    }
+);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
