@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('chat.signup.create') }}">
+    <form method="POST" action="{{ route('signup.create') }}">
         @csrf
         <!-- Nickname -->
         <div>
@@ -39,7 +39,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                href="{{ route('chat.login') }}">
+                href="{{ route('signin') }}">
                 すでに登録済みの方
             </a>
 
