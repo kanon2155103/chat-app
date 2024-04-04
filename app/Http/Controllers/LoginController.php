@@ -15,7 +15,7 @@ class LoginController  extends Controller
      */
     public function create()
     {
-        return view('chat.login');
+        return view('signin');
     }
 
     /**
@@ -41,6 +41,6 @@ class LoginController  extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('chat/signin');
+        return redirect('signin');
     }
 }
