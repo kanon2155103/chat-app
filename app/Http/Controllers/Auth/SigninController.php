@@ -34,7 +34,7 @@ class SigninController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect('chat');
     }
     /**
      * Remove the specified resource from storage.

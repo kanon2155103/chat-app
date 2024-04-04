@@ -44,6 +44,6 @@ class SignupController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('signup');
+        return redirect('chat');
     }
 }
