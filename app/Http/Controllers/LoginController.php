@@ -15,11 +15,7 @@ class LoginController  extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
-        return view('login');
-=======
         return view('chat.login');
->>>>>>> origin/signup
     }
 
     /**
@@ -30,43 +26,10 @@ class LoginController  extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        //
+        $request->authenticate();
+        $request->session()->regenerate();
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -75,6 +38,9 @@ class LoginController  extends Controller
      */
     public function destroy($id)
     {
-        //
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('chat/signin');
     }
 }
