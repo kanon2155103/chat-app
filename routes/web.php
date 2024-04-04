@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\AccountController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +20,30 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('chat')
+->name('chat.')
+->group(
+    function() {
+        Route::middleware(['auth'])
+        ->controller(ChatController::class)
+        ->group(
+            function() {
+                route::get('/', 'index')->name('index');
+                route::get('/create', 'create')->name('create');
+                route::post('/', 'store')->name('store');
+            }
+        );
+
+        Route::name('account.')
+        ->controller(AccountController::class)
+        ->group(
+            function() {
+                route::get('user/{id}', 'index')->name('index');
+            }
+        );
+    }
+);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

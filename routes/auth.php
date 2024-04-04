@@ -11,6 +11,27 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignupController;
+
+Route::name('signin.')
+->controller(LoginController::class)
+->group(
+    function() {
+        route::get('/signin', 'create')->name('create');
+        route::post('/signin', 'store')->name('store');
+    }
+);
+
+Route::name('signup.')
+->controller(SignupController::class)
+->group(
+    function() {
+        route::get('/signup', 'create')->name('create');
+        route::post('/signup', 'store')->name('store');
+    }
+);
+
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
