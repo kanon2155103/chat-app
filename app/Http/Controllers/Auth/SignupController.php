@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Signup;
 use App\Providers\RouteServiceProvider;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\models\User;
 
-class SignupController  extends Controller
+class SignupController extends Controller
 {
     /**
      * Show the form for creating a new resource.
@@ -43,6 +44,6 @@ class SignupController  extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        return redirect('signup');
+        return redirect('chat');
     }
 }

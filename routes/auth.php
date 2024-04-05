@@ -11,11 +11,11 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SignupController;
+use App\Http\Controllers\Auth\SigninController;
+use App\Http\Controllers\Auth\SignupController;
 
 Route::name('signin.')
-->controller(LoginController::class)
+->controller(SigninController::class)
 ->group(
     function() {
         route::get('/signin', 'create')->name('create');
