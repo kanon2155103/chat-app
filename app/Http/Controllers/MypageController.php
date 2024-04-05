@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 
-class AccountController  extends Controller
+class MypageController extends Controller
 {
     /**
      * Display a listing of the resource.

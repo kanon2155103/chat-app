@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\AccountController;
+use App\Http\Controllers\MypageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +36,7 @@ Route::prefix('chat')
         );
 
         Route::name('account.')
-        ->controller(AccountController::class)
+        ->controller(MypageController::class)
         ->group(
             function() {
                 route::get('user/{id}', 'index')->name('index');
