@@ -21,11 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('chat')
-->name('chat.')
+Route::middleware(['auth'])
+->prefix('chat')
 ->group(
     function() {
-        Route::middleware(['auth'])
+        Route::name('chat.')
         ->controller(ChatController::class)
         ->group(
             function() {
@@ -35,11 +35,11 @@ Route::prefix('chat')
             }
         );
 
-        Route::name('account.')
+        Route::name('mypage.')
         ->controller(MypageController::class)
         ->group(
             function() {
-                route::get('user/{id}', 'index')->name('index');
+                route::get('mypage/{id}', 'index')->name('index');
             }
         );
     }

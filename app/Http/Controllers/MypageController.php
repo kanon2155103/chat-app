@@ -13,9 +13,11 @@ class MypageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $id)
     {
-        return view('mypage.index');
+        $link = route('mypage.index', ['id' => $request->id ]);
+        $query = User::find($id);
+        return view('chat.mypage', compact('link', 'query',));
     }
 
 }
