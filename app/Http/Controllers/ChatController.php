@@ -8,14 +8,23 @@ use App\Models\Post;
 
 class ChatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // データの紐付けが一番難しいです……。
     public function index(Request $request)
     {
-        return view('chat.chat');
+        // $user: マイページのためにidの値を取得したいです。
+        $user = Auth::id(); // first()でしか値を取得できずにエラーが出たため暫定的に指定していますが、当然ながら、このままではどのアカウントでサインインしてもid = 1の情報しかとれません。
+        $posts = Post::with('user')->get();
+        return view('chat.chat', compact('user', 'posts'));
+    }
+
+    public function store(Request $request)
+    {
+        // メッセージ内容、投稿した人のidを保存したいです。
+        Post::create([
+            'content' => $request->content,
+            'user_id' => $request->user_id, // こちらで投稿者のid（ログインしている人のid）を送りたいですが、現状ではuser_idがnullだというエラーが出ております。どう紐付けたらよいでしょうか（bladeの方ですよね……）？
+        ]);
+        return redirect('chat');
     }
 
 }

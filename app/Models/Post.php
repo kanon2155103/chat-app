@@ -14,4 +14,7 @@ class Post extends Model
         'user_id',
         'created_stamp',
     ];
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

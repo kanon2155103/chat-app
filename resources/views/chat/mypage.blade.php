@@ -1,7 +1,7 @@
 <x-app-layout>
 	<x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-			{{ $query->id }} . {{ $query->nickname }}
+			{{ $user->id }} . {{ $user->nickname }}
     </h2>
   </x-slot>
 	<div class="py-12">
@@ -16,7 +16,7 @@
 										<div class="relative">
 											<label for="name" class="leading-7 text-sm text-gray-600">Name</label>
 											<div class="w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-												{{ $query->nickname }}
+												{{ $user->nickname }}
 											</div>
 										</div>
 									</div>
@@ -24,7 +24,7 @@
 										<div class="relative">
 											<label for="email" class="leading-7 text-sm text-gray-600">Email</label>
 											<div class="w-full rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-												{{ $query->email }}
+												{{ $user->email }}
 											</div>
 										</div>
 									</div>

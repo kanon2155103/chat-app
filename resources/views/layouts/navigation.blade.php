@@ -10,11 +10,17 @@
                     </a>
                 </div>
 
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <!-- 以下を追加しようとして玉砕しています（コメントアウトの際に引っかかるため、ルート指定部分のマスタッシュは外しています。
+                    <x-nav-link href="route('mypage.index', ['id' => $user->id ])" active="request()->routeIs('mypage.index', ['id' => $user->id ])">
+                        Contact List
+                    </x-nav-link>
+                    -->
                 </div>
             </div>
 

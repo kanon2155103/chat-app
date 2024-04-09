@@ -16,8 +16,8 @@ class MypageController extends Controller
     public function index(Request $request, $id)
     {
         $link = route('mypage.index', ['id' => $request->id ]);
-        $query = User::find($id);
-        return view('chat.mypage', compact('link', 'query',));
+        $user = User::find($id);
+        return view('chat.mypage', compact('link', 'user'));
     }
 
 }
