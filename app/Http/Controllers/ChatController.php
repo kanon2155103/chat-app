@@ -12,7 +12,7 @@ class ChatController extends Controller
     public function index(Request $request)
     {
         // $user: マイページのためにidの値を取得したいです。
-        $user = Auth::id(); // first()でしか値を取得できずにエラーが出たため暫定的に指定していますが、当然ながら、このままではどのアカウントでサインインしてもid = 1の情報しかとれません。
+        $user = User::first(); // first()でしか値を取得できずにエラーが出たため暫定的に指定していますが、当然ながら、このままではどのアカウントでサインインしてもid = 1の情報しかとれません。
         $posts = Post::with('user')->get();
         return view('chat.chat', compact('user', 'posts'));
     }
