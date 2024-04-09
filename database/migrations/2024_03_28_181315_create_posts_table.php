@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('content');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
+            /* $table->string('created_stamp')
+            ->generatedAs("DATE_FORMAT(created_at, '%Y-%m-%d %H:%i')")
+            ->stored(); */ // この定義ではデフォルト値が存在しない様子
         });
     }
 
